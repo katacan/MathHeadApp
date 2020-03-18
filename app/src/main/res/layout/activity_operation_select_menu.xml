@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/operationSelectLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OperationSelectMenuActivity">
+
+    <Button
+        android:id="@+id/sumButton"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="161dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="goLevelSelect"
+        android:tag="SUMMATION"
+        android:text="TOPLAMA"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/subButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/subButton"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="goLevelSelect"
+        android:tag="SUBSTRACTION"
+        android:text="ÇIKARMA"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/mulButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sumButton" />
+
+    <Button
+        android:id="@+id/mulButton"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="goLevelSelect"
+        android:tag="MULTIPLICATION"
+        android:text="ÇARPMA"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/divButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subButton" />
+
+    <Button
+        android:id="@+id/divButton"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="165dp"
+        android:onClick="goLevelSelect"
+        android:tag="DIVISION"
+        android:text="BÖLME"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mulButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
