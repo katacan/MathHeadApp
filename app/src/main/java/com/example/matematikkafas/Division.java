@@ -5,7 +5,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Multiplication extends OperationFactory {
+public class Division extends OperationFactory {
 
     private int trueAnswer;
     private int numOfAnswers = 4;
@@ -16,7 +16,7 @@ public class Multiplication extends OperationFactory {
     private int secondSumNum;
     private int indexOfTrueAnswer;
 
-    public Multiplication(int level) {
+    public Division(int level) {
         super(level);
     }
 
@@ -28,22 +28,22 @@ public class Multiplication extends OperationFactory {
                 setOperationNums(10, 1, 1);
                 break;
             case 2:
-                setOperationNums(20, 2, 2);
+                setOperationNums(50, 2, 2);
                 break;
             case 3:
-                setOperationNums(50, 2, 3);
+                setOperationNums(100, 2, 3);
                 break;
             case 4:
-                setOperationNums(100, 2, 4);
+                setOperationNums(100, 10, 4);
                 break;
             case 5:
-                setOperationNums(20, 10, 5);
+                setOperationNums(300, 10, 5);
                 break;
             case 6:
-                setOperationNums(50,10, 6);
+                setOperationNums(600,10, 6);
                 break;
             case 7:
-                setOperationNums(49, 40, 7);
+                setOperationNums(1500, 50, 7);
                 break;
             default:
                 throw new IllegalArgumentException("This level does not exist");
@@ -59,13 +59,14 @@ public class Multiplication extends OperationFactory {
         }
 
         // The last digits of two answers are same
-        if(level > 2) {
+     /*   if(level > 4) {
             while(!containAnswersLastDigitTwoTimes(answers, trueAnswer)) {
                 int index = random.nextInt(numOfAnswers);
                 answers.remove(index);
                 getWrongAnswer(level, trueAnswer);
             }
-        }
+        }  */
+
     }
 
     public boolean containAnswersLastDigitTwoTimes (ArrayList<Integer> answers, int trueAnswer) {
@@ -99,9 +100,21 @@ public class Multiplication extends OperationFactory {
         firstSumNum = randomInt(upperLevel, lowerLevel);
         secondSumNum = randomInt(upperLevel, lowerLevel);
 
-        // Multiplier or multiplicand is a digit but not both
-        if(level == 2 || level == 3 || level == 4) {
-            while(secondSumNum / 10 != 0) {
+        while (firstSumNum < secondSumNum ) {
+            firstSumNum = randomInt(upperLevel, lowerLevel);
+            secondSumNum = randomInt(upperLevel, lowerLevel);
+        }
+        if (level > 2) {
+            while (firstSumNum - secondSumNum < 10 ||firstSumNum % secondSumNum != 0) {
+                firstSumNum = randomInt(upperLevel, lowerLevel);
+                secondSumNum = randomInt(upperLevel, lowerLevel);
+            }
+        }
+
+
+        // Divisior is a digit
+        if(level == 2 || level == 3) {
+            while(secondSumNum / 10 != 0 || firstSumNum % secondSumNum != 0) {
                 secondSumNum = randomInt(upperLevel, lowerLevel);
             }
         }
@@ -121,7 +134,7 @@ public class Multiplication extends OperationFactory {
 
     @Override
     public int getTrueAnswer() {
-        return firstSumNum * secondSumNum;
+        return firstSumNum / secondSumNum;
     }
 
     @Override
@@ -140,15 +153,15 @@ public class Multiplication extends OperationFactory {
             }
             answers.add(wrongAnswer);
         } else if (level == 4 || level == 5){
-            wrongAnswer = randomInt(trueAnswer + 13, trueAnswer - 13);
+            wrongAnswer = randomInt(trueAnswer + 5, trueAnswer - 5);
             while (wrongAnswer == trueAnswer || wrongAnswer < 0 || answers.contains(wrongAnswer)) {
-                wrongAnswer  = randomInt(trueAnswer + 13, trueAnswer - 13);
+                wrongAnswer  = randomInt(trueAnswer + 5, trueAnswer - 5);
             }
             answers.add(wrongAnswer);
         } else {
-            wrongAnswer = randomInt(trueAnswer + 30, trueAnswer - 30);
+            wrongAnswer = randomInt(trueAnswer + 8, trueAnswer - 8);
             while (wrongAnswer == trueAnswer || wrongAnswer < 0 || answers.contains(wrongAnswer)) {
-                wrongAnswer  = randomInt(trueAnswer  + 30, trueAnswer - 30);
+                wrongAnswer  = randomInt(trueAnswer  + 8, trueAnswer - 8);
             }
             answers.add(wrongAnswer);
         }
@@ -177,6 +190,6 @@ public class Multiplication extends OperationFactory {
     public void setOperationText(TextView textView) {
         String firstOperationNum = Integer.toString(firstSumNum);
         String secondOperationNum = Integer.toString(secondSumNum);
-        textView.setText(firstOperationNum + " x " + secondOperationNum);
+        textView.setText(firstOperationNum + " / " + secondOperationNum);
     }
 }
