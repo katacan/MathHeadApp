@@ -3,15 +3,17 @@ package com.example.matematikkafas;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,7 @@ public class operationActivity extends AppCompatActivity {
 
     private GridLayout buttonGridLayout;
     private ConstraintLayout gameLayout;
+    private LinearLayout pauseLayout;
 
     private TextView operationTextView;
     private TextView scoreTextView;
@@ -75,6 +78,7 @@ public class operationActivity extends AppCompatActivity {
         playAgainButton = findViewById(R.id.playAgainButton);
         buttonGridLayout = findViewById(R.id.buttonGridLayout);
         gameLayout = findViewById(R.id.gameLayout);
+        pauseLayout = findViewById(R.id.pauseLayout);
 
         timeLimit = 45000;
         numOfTrueAnsweredQuestions = 0;
@@ -108,10 +112,9 @@ public class operationActivity extends AppCompatActivity {
             operationFactory = new Substraction(level);
         } else if(chosenOperation.equals(Operations.MULTIPLICATION.toString())) {
             operationFactory = new Multiplication(level);
+        } else {
+            operationFactory = new Division(level);
         }
-
-
-
 
     }
 
@@ -186,6 +189,8 @@ public class operationActivity extends AppCompatActivity {
     public void startGame() {
         gameFinish = false;
         newRound();
+        resultTextView.setVisibility(View.VISIBLE);
+        resultTextView.setText("Hadi Baþla!");
         timer(timeLimit, 1000);
     }
 
@@ -214,7 +219,10 @@ public class operationActivity extends AppCompatActivity {
         } else {
             resultTextView.setText("YANLIÞ");
         }
-        resultTextView.setVisibility(View.VISIBLE);
+
+        numOfQuestions++;
+
+        scoreTextView.setText(Integer.toString(numOfTrueAnsweredQuestions) + "/" + Integer.toString(numOfQuestions));
 
         newRound();
     }
@@ -228,5 +236,32 @@ public class operationActivity extends AppCompatActivity {
         }
     }
 
+    public void pauseGame(View view) {
+        gameLayout.setVisibility(View.INVISIBLE);
+        pauseLayout.setVisibility(View.VISIBLE);
+        gamePaused = true;
+    }
 
+    public void continueGame(View view) {
+        gamePaused = false;
+        pauseLayout.setVisibility(View.INVISIBLE);
+        gameLayout.setVisibility(View.VISIBLE);
+        timer(remainingCountDownTime, 1000);
+    }
+
+    public void turnToMainMenu(View view) {
+        countDownTimer.cancel();
+        if(gamePaused) {
+            gamePaused = false;
+        }
+        Intent mainMenu = new Intent(this, MainActivity.class);
+        mainMenu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(mainMenu);
+    }
+
+    public void turnToOperationSelect(View view) {
+        Intent operationSelectMenu = new Intent(this, OperationSelectMenuActivity.class);
+        operationSelectMenu.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(operationSelectMenu);
+    }
 }
