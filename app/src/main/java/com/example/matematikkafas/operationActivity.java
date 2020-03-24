@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class operationActivity extends AppCompatActivity {
 
@@ -54,6 +55,7 @@ public class operationActivity extends AppCompatActivity {
     private int level;
     private String chosenOperation;
     private String trueAnswerButtonTag;
+    private String language;
 
 
 
@@ -83,6 +85,8 @@ public class operationActivity extends AppCompatActivity {
         timeLimit = 45000;
         numOfTrueAnsweredQuestions = 0;
         numOfQuestions = 0;
+
+        language = Locale.getDefault().getDisplayLanguage();
 
         normalNumTextSize = (float) 55;
         smallNumTextSize = (float) 50;
@@ -190,7 +194,12 @@ public class operationActivity extends AppCompatActivity {
         gameFinish = false;
         newRound();
         resultTextView.setVisibility(View.VISIBLE);
-        resultTextView.setText("Hadi Baþla!");
+        if (language.equals("Deutsch")) {
+            resultTextView.setText("NA LOS!");
+        } else {
+            resultTextView.setText("Hadi Baþla!");
+        }
+
         timer(timeLimit, 1000);
     }
 
@@ -214,10 +223,19 @@ public class operationActivity extends AppCompatActivity {
         }
 
         if(chosenAnswer.equals(Integer.toString(trueAnswer))) {
-            resultTextView.setText("DOÐRU");
+            if (language.equals("Deutsch")) {
+                resultTextView.setText("RICHTIG");
+            } else {
+                resultTextView.setText("DOÐRU");
+            }
+
             numOfTrueAnsweredQuestions++;
         } else {
-            resultTextView.setText("YANLIÞ");
+            if (language.equals("Deutsch")) {
+                resultTextView.setText("FALSCH");
+            } else {
+                resultTextView.setText("YANLIÞ");
+            }
         }
 
         numOfQuestions++;
