@@ -3,6 +3,7 @@ package com.example.matematikkafas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,6 @@ public class levelSelect extends AppCompatActivity {
 
     NumberPicker levelPicker;
     String chosenOperation;
-    Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ public class levelSelect extends AppCompatActivity {
         chosenOperation = getIntent().getStringExtra("Chosen Operation");
         Log.i("CHOSEN OPERATION", chosenOperation);
 
-        startButton = findViewById(R.id.startButton);
         levelPicker = findViewById(R.id.levelPicker);
         levelPicker.setMinValue(1);
         levelPicker.setMaxValue(7);

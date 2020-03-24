@@ -35,7 +35,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="35"
-        android:text="SEVİYENİ SEÇ"
+        android:text="Wähle dein Niveau"
         android:textColor="@android:color/holo_orange_light"
         android:textColorLink="#00BB2B2B"
         android:textSize="40sp"

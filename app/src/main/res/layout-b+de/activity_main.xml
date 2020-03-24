@@ -9,12 +9,12 @@
 
     <Button
         android:id="@+id/goOperationChooseMenuButton"
-        android:layout_width="306dp"
+        android:layout_width="wrap_content"
         android:layout_height="118dp"
         android:background="@drawable/operation_select_button_selector"
         android:fontFamily="@font/mufferaw_font_family"
         android:onClick="goOperationChooseMenu"
-        android:text="İŞLEM SEÇİMİ"
+        android:text="OPERATION WAHL"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
