@@ -12,7 +12,7 @@
         android:id="@+id/levelPicker"
         android:layout_width="156dp"
         android:layout_height="338dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="20dp"
         android:scaleX="1"
         android:scaleY="1"
@@ -21,16 +21,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
     </NumberPicker>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="71dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:layout_marginTop="55dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="8dp"
         android:shadowColor="@android:color/holo_blue_dark"
         android:shadowDx="0"
         android:shadowDy="0"
@@ -39,6 +44,7 @@
         android:textColor="@android:color/holo_orange_light"
         android:textColorLink="#00BB2B2B"
         android:textSize="40sp"
+        app:autoSizeTextType="uniform"
         app:fontFamily="@font/mufferaw_font_family"
         app:layout_constraintBottom_toTopOf="@+id/levelPicker"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +55,7 @@
         android:id="@+id/imageView"
         android:layout_width="122dp"
         android:layout_height="97dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/start_game_selector"
         android:onClick="startGame"
@@ -56,6 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelPicker"
         app:srcCompat="@drawable/start_game_normal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
