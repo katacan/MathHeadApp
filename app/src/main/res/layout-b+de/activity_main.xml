@@ -10,8 +10,8 @@
     <Button
         android:id="@+id/goOperationChooseMenuButton"
         android:layout_width="wrap_content"
-        android:layout_height="118dp"
-        android:background="@drawable/operation_select_button_selector"
+        android:layout_height="67dp"
+        android:background="@drawable/myb"
         android:fontFamily="@font/mufferaw_font_family"
         android:onClick="goOperationChooseMenu"
         android:text="OPERATION WAHL"

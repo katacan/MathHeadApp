@@ -28,7 +28,7 @@ public class operationActivity extends AppCompatActivity {
 
     private GridLayout buttonGridLayout;
     private ConstraintLayout gameLayout;
-    private LinearLayout pauseLayout;
+    private ConstraintLayout pauseLayout;
 
     private TextView operationTextView;
     private TextView scoreTextView;
@@ -195,9 +195,9 @@ public class operationActivity extends AppCompatActivity {
         newRound();
         resultTextView.setVisibility(View.VISIBLE);
         if (language.equals("Deutsch")) {
-            resultTextView.setText("NA LOS!");
+            resultTextView.setText("LOS GEHT'S");
         } else {
-            resultTextView.setText("Hadi Baþla!");
+            resultTextView.setText("BAÞLA!");
         }
 
         timer(timeLimit, 1000);
