@@ -1,4 +1,4 @@
-# MathHeadApp
+# Math Head 
 An app to improve basic mathematical operations skills :woman_student: :man_student: :book:
 
 Turkish and German versions are available !
